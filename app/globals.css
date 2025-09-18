@@ -123,4 +123,100 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  .dark * {
+    transition: none !important;
+  }
+  
+  /* Specifically target sidebar elements to prevent flickering */
+  .dark [data-sidebar="sidebar"],
+  .dark [data-slot="sidebar"],
+  .dark [data-slot="sidebar-content"],
+  .dark [data-slot="sidebar-header"],
+  .dark [data-slot="sidebar-footer"],
+  .dark [data-slot="sidebar-menu"],
+  .dark [data-slot="sidebar-menu-button"],
+  .dark [data-slot="sidebar-group"],
+  .dark [data-slot="sidebar-group-content"] {
+    transition: none !important;
+  }
+  
+  /* Only apply theme transitions to specific layout containers */
+  html, body {
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  }
+  
+  /* Very specific theme transitions only for main containers */
+  main, .bg-card, .bg-background {
+    transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+  }
+  
+  /* Prevent transitions on theme change for better performance */
+  .theme-transitioning * {
+    transition: none !important;
+  }
+  
+  /* Smooth transitions for specific elements - only when explicitly requested */
+  .transition-theme {
+    transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+  }
+  
+  /* Completely disable transitions for interactive elements in dark mode */
+  .dark button, .dark input, .dark select, .dark textarea, .dark a, .dark [role="button"] {
+    transition: none !important;
+  }
+  
+  /* Enhanced button transitions - only for interactive states */
+  button {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Remove theme transitions from interactive elements */
+  button, input, select, textarea, a, [role="button"] {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  
+  /* Smooth card transitions */
+  .card, .bg-card {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Hide scrollbars but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+  
+  /* Custom scrollbar for specific elements */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+  }
 }

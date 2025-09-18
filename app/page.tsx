@@ -101,6 +101,9 @@
 //     </div>
 //   );
 // }
+"use client"
+
+import * as React from "react"
 import { 
   Sidebar, 
   SidebarContent, 
@@ -118,6 +121,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { NotificationPanel } from "@/components/notification-panel"
 import { 
   Home, 
   Users, 
@@ -144,6 +148,8 @@ import {
 } from "lucide-react"
 
 export default function Page() {
+  const [isNotificationOpen, setIsNotificationOpen] = React.useState(false)
+
   return (
     <>
       <Sidebar>
@@ -153,7 +159,7 @@ export default function Page() {
               <Star className="h-4 w-4" />
             </div>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">ByeWind</span>
+              <span className="truncate font-semibold">Harsha's</span>
               <span className="truncate text-xs">Dashboard</span>
             </div>
           </div>
@@ -260,7 +266,7 @@ export default function Page() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter>
+        {/* <SidebarFooter>
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -291,7 +297,7 @@ export default function Page() {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-        </SidebarFooter>
+        </SidebarFooter> */}
       </Sidebar>
       
       <SidebarInset>
@@ -316,7 +322,11 @@ export default function Page() {
             <Button variant="ghost" size="icon">
               <Clock className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => setIsNotificationOpen(!isNotificationOpen)}
+            >
               <Bell className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="icon">
@@ -325,10 +335,9 @@ export default function Page() {
           </div>
         </header>
         
-        <main className="flex-1 overflow-auto bg-background">
-          <div className="flex">
-            <div className="flex-1 p-6">
-              <h1 className="text-3xl font-bold mb-8">eCommerce</h1>
+        <main className="flex-1 overflow-auto bg-background no-scrollbar">
+          <div className="p-6">
+            <h1 className="text-3xl font-bold mb-8">eCommerce</h1>
             
             {/* Metrics Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -563,144 +572,15 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            </div>
-            
-            {/* Right Sidebar */}
-            <div className="w-80 border-l bg-card">
-              <div className="p-6">
-                <h2 className="text-lg font-semibold mb-6">Notifications</h2>
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
-                      <Bug className="h-4 w-4 text-red-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">You have a bug that needs...</p>
-                      <p className="text-xs text-muted-foreground">Just now</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                      <UserPlus className="h-4 w-4 text-blue-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">New user registered</p>
-                      <p className="text-xs text-muted-foreground">59 minutes ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
-                      <Bug className="h-4 w-4 text-red-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">You have a bug that needs...</p>
-                      <p className="text-xs text-muted-foreground">12 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                      <Wifi className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">Andi Lane subscribed to you</p>
-                      <p className="text-xs text-muted-foreground">Today, 11:59 AM</p>
-                    </div>
-                  </div>
-                </div>
-
-                <h2 className="text-lg font-semibold mb-6">Activities</h2>
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">J</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">You have a bug that needs...</p>
-                      <p className="text-xs text-muted-foreground">Just now</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">A</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">Released a new version</p>
-                      <p className="text-xs text-muted-foreground">59 minutes ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">M</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">Submitted a bug</p>
-                      <p className="text-xs text-muted-foreground">12 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">K</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">Modified A data in Page X</p>
-                      <p className="text-xs text-muted-foreground">Today, 11:59 AM</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">L</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm">Deleted a page in Project X</p>
-                      <p className="text-xs text-muted-foreground">Feb 2, 2023</p>
-                    </div>
-                  </div>
-                </div>
-
-                <h2 className="text-lg font-semibold mb-6">Contacts</h2>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">NC</span>
-                    </div>
-                    <span className="text-sm">Natali Craig</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">DC</span>
-                    </div>
-                    <span className="text-sm">Drew Cano</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">OD</span>
-                    </div>
-                    <span className="text-sm">Orlando Diggs</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">AL</span>
-                    </div>
-                    <span className="text-sm">Andi Lane</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">KM</span>
-                    </div>
-                    <span className="text-sm">Kate Morrison</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-blue-400 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">KO</span>
-                    </div>
-                    <span className="text-sm">Koray Okumus</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </main>
       </SidebarInset>
+      
+      {/* Notification Panel */}
+      <NotificationPanel 
+        isOpen={isNotificationOpen} 
+        onClose={() => setIsNotificationOpen(false)} 
+      />
     </>
   )
 }
