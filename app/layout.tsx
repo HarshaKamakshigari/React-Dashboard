@@ -44,11 +44,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+      {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" /> */}
+      </head>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          // enableSystem
           disableTransitionOnChange={true}
         >
           <SidebarProvider>
