@@ -5,9 +5,11 @@ import { SidebarInset } from "@/components/ui/sidebar"
 import { NotificationPanel } from "@/components/notification-panel"
 import { AppSidebar } from "@/components/app-sidebar"
 import { AppHeader } from "@/components/app-header"
-import { MetricsCards } from "@/components/metrics-cards"
+// import { MetricsCards } from "@/components/metrics-cards"
 import { ChartsSection } from "@/components/charts-section"
 import { BottomSection } from "@/components/bottom-section"
+import{Dashboard} from "@/components/metrics-cards"
+import{Dashboard2} from "@/components/support"
 
 export default function Page() {
   const [isNotificationOpen, setIsNotificationOpen] = React.useState(false)
@@ -27,7 +29,8 @@ export default function Page() {
           <div className="p-6">
             <h1 className="text-3xl font-bold mb-8 dark:text-[#FFFFFF]">eCommerce</h1>
             
-            <MetricsCards />
+            {/* <Dashboard /> */}
+            <Dashboard2 />
             <ChartsSection />
             <BottomSection />
           </div>

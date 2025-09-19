@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { 
   Sidebar, 
   SidebarContent, 
@@ -75,10 +76,10 @@ export function AppSidebar({ activeItem = "default" }: AppSidebarProps) {
                   isActive={activeItem === "default"}
                   className="dark:text-[#FFFFFF] dark:hover:bg-[#4C51BF] data-[active=true]:dark:bg-[#4C51BF]"
                 >
-                  <a href="/">
+                  <Link href="/">
                     <BarChart3 className="h-4 w-4" />
                     <span>Default</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
@@ -87,11 +88,11 @@ export function AppSidebar({ activeItem = "default" }: AppSidebarProps) {
                   isActive={activeItem === "ecommerce"}
                   className="dark:text-[#FFFFFF] dark:hover:bg-[#4C51BF] data-[active=true]:dark:bg-[#4C51BF]"
                 >
-                  <a href="/orders">
+                  <Link href="/orders">
                     <ShoppingCart className="h-4 w-4" />
                     <span>eCommerce</span>
                     <ArrowUp className="h-3 w-3 ml-auto" />
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
